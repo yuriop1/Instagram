@@ -2,13 +2,13 @@
   <div class="post">
     <div class="post-header">
       <div class="profile"></div>
-      <span class="profile-name">{{ param[2].name }}</span>
+      <span class="profile-name">{{ param.name }}</span>
     </div>
-    <div class="post-body"></div>
+    <div class="post-body" style="{ backgroundImage : `url(${param.postImage})`}"></div>
     <div class="post-content">
       <p>{{ param.likes }}</p>
-      <p><strong>{{ param[0].filters }}</strong> {{ param[0].components }}</p>
-      <p class="date">{{ param[0].date }}</p>
+      <p><strong>{{ param.filters }}</strong> {{ param.components }}</p>
+      <p class="date">{{ param.date }}</p>
     </div>
 </div> 
 </template>
