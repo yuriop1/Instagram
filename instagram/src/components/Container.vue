@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Post :param="param[i]" v-for="(instaNem, i) in param" :key="i"/>
+    <Post :param="param[i]" v-for="(instaNum, i) in param" :key="i"/>
 
 </div>
 </template>

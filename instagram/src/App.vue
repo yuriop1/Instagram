@@ -10,6 +10,7 @@
   </div>
 
   <Container :param="instaData"/>
+  <button @click="more">더보기</button>
 
   <div class="footer">
     <ul class="footer-button-plus">
@@ -21,7 +22,8 @@
 
 <script>
 import Container from './components/Container.vue';
-import instagramData from './assets/InstagramData.js'
+import instagramData from './assets/InstagramData.js';
+import axios from 'axios';
 
 export default {
   name: 'App',
@@ -30,7 +32,20 @@ export default {
   },
   data(){
     return {
-      instaData : instagramData
+      instaData : instagramData,
+      moreButton : 0,
+    }
+  },
+  methods :{
+    more(){
+      const addr = 'https://codingapple1.github.io/vue/more' + this.moreButton + '.json'
+      axios.get(addr)
+      .then((d)=>{
+        this.instaData.push(d.data);
+        if(this.moreButton != 1){
+          this.moreButton ++
+        }
+      })
     }
   },
 }

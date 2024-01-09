@@ -9,6 +9,7 @@
       <p>{{ param.likes }}</p>
       <p><strong>{{ param.filters }}</strong> {{ param.components }}</p>
       <p class="date">{{ param.date }}</p>
+      <p>{{ param.content }}</p>
     </div>
 </div> 
 </template>
