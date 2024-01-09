@@ -9,12 +9,17 @@
     <img src="./assets/logo.png" class="logo" />
   </div>
 
-  <Container :param="instaData"/>
+  
+  <button @click="step = 0">버튼0</button>
+  <button @click="step = 1">버튼1</button>
+  <button @click="step = 2">버튼2</button> 
+
+  <Container :param="instaData" :step="step" :url="url"/>
   <button @click="more">더보기</button>
 
   <div class="footer">
     <ul class="footer-button-plus">
-      <input type="file" id="file" class="inputfile" />
+      <input @change="upload" multiple accept="image/*" type="file" id="file" class="inputfile" />
       <label for="file" class="input-plus">+</label>
     </ul>
   </div>
@@ -34,9 +39,10 @@ export default {
     return {
       instaData : instagramData,
       moreButton : 0,
+      step:0,
     }
   },
-  methods :{
+  methods : {
     more(){
       const addr = 'https://codingapple1.github.io/vue/more' + this.moreButton + '.json'
       axios.get(addr)
@@ -46,7 +52,14 @@ export default {
           this.moreButton ++
         }
       })
-    }
+    },
+    upload(e){
+      let a = e.target.files;
+      console.log(a[0]);
+      this.url = URL.createObjectURL(a[0]);
+      console.log(this.url);
+      this.step = 1;
+    },
   },
 }
 </script>
