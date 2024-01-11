@@ -5,7 +5,7 @@
     </ul>
     <ul class="header-button-right">
       <li v-if="step===1" @click="step++">Next</li>
-      <li v-if="step===2" @click="publish()">발행</li>
+      <li v-if="step===2" @click="publish">발행</li>
     </ul>
     <img src="./assets/logo.png" class="logo" />
   </div>
@@ -75,7 +75,7 @@ export default {
       filter: "perpeua"
     };
       this.instaData.unshift(내게시물);
-      this.stpe = 0;
+      this.step = 0;
     },
   },
 }
