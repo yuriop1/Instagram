@@ -15,9 +15,9 @@
     </div>
     <div v-show="step===2">
         <!-- 글작성페이지 -->
-        <div class="upload-image"  :style="`background-image: url(${url})`"></div>
+        <div class="upload-image" :style="`background-image: url(${url})`"></div>
         <div class="write" >
-            <textarea class="write-box">write!</textarea>
+            <textarea @input="$emit('containerParam',$event.target.value)" class="write-box">write!</textarea>
         </div>
     </div>
 

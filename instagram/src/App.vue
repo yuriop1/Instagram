@@ -15,7 +15,7 @@
   <button @click="step = 1">버튼1</button>
   <button @click="step = 2">버튼2</button> 
 
-  <Container :param="instaData" :step="step" :url="url"/>
+  <Container :param="instaData" :step="step" :url="url" @containerParam = "containerParam"/>
 
   <button @click="more">더보기</button>
 
@@ -71,7 +71,7 @@ export default {
       likes: 36,
       date: "May 15",
       liked: false,
-      content: "오늘 무엇을 했냐면요 아무것도 안했어요 ?",
+      content: this.containerParam,
       filter: "perpeua"
     };
       this.instaData.unshift(내게시물);
