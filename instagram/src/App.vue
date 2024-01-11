@@ -4,7 +4,8 @@
       <li>Cancel</li>
     </ul>
     <ul class="header-button-right">
-      <li>Next</li>
+      <li v-if="step===1" @click="step++">Next</li>
+      <li v-if="step===2" @click="publish()">발행</li>
     </ul>
     <img src="./assets/logo.png" class="logo" />
   </div>
@@ -15,6 +16,7 @@
   <button @click="step = 2">버튼2</button> 
 
   <Container :param="instaData" :step="step" :url="url"/>
+
   <button @click="more">더보기</button>
 
   <div class="footer">
@@ -40,6 +42,7 @@ export default {
       instaData : instagramData,
       moreButton : 0,
       step:0,
+      url: '',
     }
   },
   methods : {
@@ -59,6 +62,20 @@ export default {
       this.url = URL.createObjectURL(a[0]);
       console.log(this.url);
       this.step = 1;
+    },
+    publish(){
+      var 내게시물 = {
+      name: "Kim Hyun",
+      userImage: "https://picsum.photos/100?random=3",
+      postImage: this.url,
+      likes: 36,
+      date: "May 15",
+      liked: false,
+      content: "오늘 무엇을 했냐면요 아무것도 안했어요 ?",
+      filter: "perpeua"
+    };
+      this.instaData.unshift(내게시물);
+      this.stpe = 0;
     },
   },
 }
