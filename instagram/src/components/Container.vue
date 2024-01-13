@@ -6,9 +6,11 @@
     <div v-show="step===1">
         <div class="upload-image" :style="`background-image: url(${url})`"></div>
         <div class="filters">
-            <filterBox :url="url" v-for="filter in filterList" :key="filter" :filter="filter"></filterBox>
+            <filterBox :url="url" v-for="filter in filterList" :key="filter" :filter="filter">
+                <span>{{ filter }}</span>
+            </filterBox>
         </div>
-    </div>
+    </div> 
     <div v-show="step===2">
         <!-- 글작성페이지 -->
         <div class="upload-image" :style="`background-image: url(${url})`"></div>

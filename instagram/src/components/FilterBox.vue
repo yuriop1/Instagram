@@ -1,5 +1,7 @@
 <template>
-  <div class="filter-item" :class="filter" :style="`background-image:url(${url})`"></div> 
+  <div class="filter-item" :class="filter" :style="`background-image:url(${url})`">
+    <slot :msg="msg"></slot>
+  </div> 
 </template>
 
 <script>
@@ -8,7 +10,12 @@ export default {
     props: {
         url: String,
         filter : String,
-    }
+    },
+    data(){
+        return{
+           msg: 'hello' 
+        }
+    },
 }
 </script>
 
