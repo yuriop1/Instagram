@@ -15,5 +15,6 @@ module.exports = {
     "no-console": "warn",//console.log 사용 시 경고
     "no-unused-vars": "warn",//할당되지 않은 변수 있을 시 경고
     'vue/multi-word-component-names': 'off',
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     },
 } 

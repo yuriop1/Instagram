@@ -14,8 +14,6 @@ moreButton: 0,
 },
 methods: {
 more() {
-// eslint-disable-next-line no-debugger
-debugger;
 console.log('첫번쨰' + this.moreButton);
 this.moreButton++;
 

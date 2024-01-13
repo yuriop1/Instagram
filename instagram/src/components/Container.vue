@@ -6,18 +6,14 @@
     <div v-show="step===1">
         <div class="upload-image" :style="`background-image: url(${url})`"></div>
         <div class="filters">
-            <div class="filter-1" ></div>
-            <div class="filter-1"></div>
-            <div class="filter-1"></div>
-            <div class="filter-1"></div>
-            <div class="filter-1"></div>
+            <filterBox :url="url" v-for="filter in filterList" :key="filter" :filter="filter"></filterBox>
         </div>
     </div>
     <div v-show="step===2">
         <!-- 글작성페이지 -->
         <div class="upload-image" :style="`background-image: url(${url})`"></div>
         <div class="write" >
-            <textarea @input="$emit('containerParam',$event.target.value)" class="write-box">write!</textarea>
+            <textarea @input="$emit('write', $event.target.value)" class="write-box">write!</textarea>
         </div>
     </div>
 
@@ -28,17 +24,28 @@
 
 <script>
 import Post from './Post.vue';
+import FilterBox from './FilterBox.vue';
 export default {
     name: 'App',
+    data(){
+        return {
+            filterList : [ "aden", "_1977", "brannan", "brooklyn", "clarendon", "earlybird", "gingham", "hudson", 
+            "inkwell", "kelvin", "lark", "lofi", "maven", "mayfair", "moon", "nashville", "perpetua", 
+            "reyes", "rise", "slumber", "stinson", "toaster", "valencia", "walden", "willow", "xpro2"],
+        }
+    },
     components: {
         Post,
+        FilterBox,
     },
     props : {
         param : Array,
         step : Number,
         url : String,
     },
+    methods : {},
 }
+
 </script>
 
 <style>

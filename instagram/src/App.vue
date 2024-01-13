@@ -15,7 +15,7 @@
   <button @click="step = 1">버튼1</button>
   <button @click="step = 2">버튼2</button> 
 
-  <Container :param="instaData" :step="step" :url="url" @containerParam = "containerParam"/>
+  <Container ref="containerRef" :param="instaData" :step="step" :url="url" @containerParam = "containerParam" @write="myWrite = $event"/>
 
   <button @click="more">더보기</button>
 
@@ -43,6 +43,7 @@ export default {
       moreButton : 0,
       step:0,
       url: '',
+      myWrite: '',
     }
   },
   methods : {
@@ -58,9 +59,8 @@ export default {
     },
     upload(e){
       let a = e.target.files;
-      console.log(a[0]);
       this.url = URL.createObjectURL(a[0]);
-      console.log(this.url);
+      debugger;
       this.step = 1;
     },
     publish(){
@@ -71,9 +71,10 @@ export default {
       likes: 36,
       date: "May 15",
       liked: false,
-      content: this.containerParam,
+      content: this.myWrite,
       filter: "perpeua"
     };
+    debugger;
       this.instaData.unshift(내게시물);
       this.step = 0;
     },
