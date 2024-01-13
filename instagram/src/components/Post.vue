@@ -6,6 +6,7 @@
     </div>
     <div :class="param.filters" class="post-body" style="{ backgroundImage : `url(${param.postImage})`}"></div>
     <div class="post-content">
+      {{ $store.state.likes }}
       <p>{{ param.likes }}</p>
       <p><strong>{{ param.filters }}</strong> {{ param.components }}</p>
       <p class="date">{{ param.date }}</p>

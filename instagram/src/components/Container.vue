@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Post v-show="step===0" :param="param[i]" v-for="(instaNum, i) in param" :key="i"/>
+    <Post @click="$store.commit('likeUp')" v-show="step===0" :param="param[i]" v-for="(instaNum, i) in param" :key="i"/>
 
     <!-- 필터선택페이지 -->
     <div v-show="step===1">

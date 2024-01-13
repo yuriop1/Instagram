@@ -15,9 +15,15 @@
   <button @click="step = 1">버튼1</button>
   <button @click="step = 2">버튼2</button> 
 
-  <h4>안녕하세요 처음만난사이 모두 안녕하세요 {{ $store.state.name }}</h4>
-  <button @click="$store.state.name = '박'">버튼</button>
-
+  <h4>안녕하세요 처음만난사이 모두 안녕하세요
+    저는 {{ $store.state.name }}
+    <button @click="$store.commit('이름변경')">이름</button>이구요
+  </h4>
+  <h5>나이는 {{ $store.state.age }}
+    <button @click="$store.commit('나이', 10)">살</button>
+    입니다
+  </h5>
+  
   <Container ref="containerRef" :param="instaData" :step="step" :url="url" @containerParam = "containerParam" @write="myWrite = $event"/>
 
   <button @click="more">더보기</button>
