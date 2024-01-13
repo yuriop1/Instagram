@@ -23,6 +23,9 @@
     <button @click="$store.commit('나이', 10)">살</button>
     입니다
   </h5>
+
+  <p>{{ $store.state.more }}</p>
+  <button @click="$store.dispatch('getData')">더보기버튼</button>
   
   <Container ref="containerRef" :param="instaData" :step="step" :url="url" @containerParam = "containerParam" @write="myWrite = $event"/>
 
