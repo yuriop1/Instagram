@@ -4,7 +4,7 @@
       <div class="profile"></div>
       <span class="profile-name">{{ param.name }}</span>
     </div>
-    <div class="post-body" style="{ backgroundImage : `url(${param.postImage})`}"></div>
+    <div :class="param.filters" class="post-body" style="{ backgroundImage : `url(${param.postImage})`}"></div>
     <div class="post-content">
       <p>{{ param.likes }}</p>
       <p><strong>{{ param.filters }}</strong> {{ param.components }}</p>

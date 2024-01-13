@@ -15,6 +15,9 @@
   <button @click="step = 1">버튼1</button>
   <button @click="step = 2">버튼2</button> 
 
+  <h4>안녕하세요 처음만난사이 모두 안녕하세요 {{ $store.state.name }}</h4>
+  <button @click="$store.state.name = '박'">버튼</button>
+
   <Container ref="containerRef" :param="instaData" :step="step" :url="url" @containerParam = "containerParam" @write="myWrite = $event"/>
 
   <button @click="more">더보기</button>
@@ -44,8 +47,16 @@ export default {
       step:0,
       url: '',
       myWrite: '',
+      emitFilter: '',
     }
   },
+
+  mounted(){
+    this.emitter.on('박스클릭', (e)=>{
+      this.emitFilter = e;
+    });
+  },
+
   methods : {
     more(){
       const addr = 'https://codingapple1.github.io/vue/more' + this.moreButton + '.json'
@@ -74,7 +85,6 @@ export default {
       content: this.myWrite,
       filter: "perpeua"
     };
-    debugger;
       this.instaData.unshift(내게시물);
       this.step = 0;
     },
