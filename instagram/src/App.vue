@@ -15,26 +15,26 @@
   <button @click="step = 1">버튼1</button>
   <button @click="step = 2">버튼2</button> 
 
-  <!-- <h4>안녕하세요 처음만난사이 모두 안녕하세요
+  <h4 v-if="step===1">안녕하세요 처음만난사이 모두 안녕하세요
     저는 {{ $store.state.name }}
     <button @click="$store.commit('이름변경')">이름</button>이구요
   </h4>
-  <h5>나이는 {{ $store.state.age }}
-    <button @click="$store.commit('나이', 10)">살</button>
-    입니다
-  </h5> -->
-  <h5>나이는 {{ 작명 }}
-    <button @click="이름변경">살</button>
+  <h5 v-if="step===1">나이는 {{ $store.state.age }}
+    <button @click="$store.commit('나이', 2)">살</button>
     입니다
   </h5>
+  <!-- <h5>나이는 {{ 작명 }}
+    <button @click="이름변경">살</button>
+    입니다
+  </h5> -->
 
 
-  <p>{{ $store.state.more }}</p>
-  <button @click="$store.dispatch('getData')">더보기버튼</button>
+  <!-- <p>{{ $store.state.more }}</p>
+  <button @click="$store.dispatch('getData')">더보기버튼</button> -->
   
   <Container ref="containerRef" :param="instaData" :step="step" :url="url" @containerParam = "containerParam" @write="myWrite = $event"/>
 
-  <button @click="more">더보기</button>
+  <button @click="morebottom">더보기</button>
 
 
   <div class="footer">
@@ -60,7 +60,7 @@ export default {
     return {
       instaData : instagramData,
       moreButton : 0,
-      step:0,
+      step:3,
       url: '',
       myWrite: '',
       emitFilter: '',
@@ -82,7 +82,7 @@ export default {
   methods : {
     ...mapMutations(['이름변경']),
     
-    more(){
+    morebottom(){
       const addr = 'https://codingapple1.github.io/vue/more' + this.moreButton + '.json'
       axios.get(addr)
       .then((d)=>{

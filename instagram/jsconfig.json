@@ -4,10 +4,7 @@
     "module": "esnext",
     "baseUrl": "./",
     "moduleResolution": "node",
-    "compilerOption":{
-      "outDir": "./dist/js",
-      "sourceMap": true,
-    },
+
     "paths": {
       "@/*": [
         "src/*"
