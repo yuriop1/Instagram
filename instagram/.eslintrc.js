@@ -3,18 +3,94 @@ module.exports = {
   env: {
     node: true,
   },
-  extends: [
-    "plugin:vue/vue3-essential",
-    "eslint:recommended",
-  ],
+  extends: ['plugin:vue/vue3-essential', 'eslint:recommended', 'plugin:prettier/recommended'],
   parserOptions: {
-    parser: "@babel/eslint-parser",
-    requireConfigFile: false,
+    parser: '@babel/eslint-parser',
   },
   rules: {
-    "no-console": "warn",//console.log 사용 시 경고
-    "no-unused-vars": "warn",//할당되지 않은 변수 있을 시 경고
-    'vue/multi-word-component-names': 'off',
+    'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+    'no-unused-vars': ['error', {vars: 'all', args: 'none', ignoreRestSiblings: false}],
+    'vue/static-class-names-order': 'error',
+    'vue/block-order': [
+      'error',
+      {
+        order: ['template', 'script', 'style'],
+      },
+    ],
+    'vue/attributes-order': [
+      'error',
+      {
+        order: [
+          'ATTR_STATIC',
+          'UNIQUE',
+          'SLOT',
+          'DEFINITION',
+          'LIST_RENDERING',
+          'CONDITIONALS',
+          'RENDER_MODIFIERS',
+          'GLOBAL',
+          'TWO_WAY_BINDING',
+          'OTHER_DIRECTIVES',
+          'ATTR_DYNAMIC',
+          'ATTR_SHORTHAND_BOOL',
+          'EVENTS',
+          'CONTENT',
+        ],
+        alphabetical: true,
+      },
+    ],
+    'vue/order-in-components': [
+      'error',
+      {
+        order: [
+          'el',
+          'name',
+          'key',
+          'parent',
+          'functional',
+          ['delimiters', 'comments'],
+          ['components', 'directives', 'filters'],
+          'extends',
+          'mixins',
+          ['provide', 'inject'],
+          'ROUTER_GUARDS',
+          'layout',
+          'middleware',
+          'validate',
+          'scrollToTop',
+          'transition',
+          'loading',
+          'inheritAttrs',
+          'model',
+          ['props', 'propsData'],
+          'emits',
+          'setup',
+          'asyncData',
+          'data',
+          'fetch',
+          'head',
+          'computed',
+          'watch',
+          'watchQuery',
+          'LIFECYCLE_HOOKS',
+          'methods',
+          ['template', 'render'],
+          'renderError',
+        ],
+      },
+    ],
+  },
+  overrides: [
+    {
+      files: ['**/__tests__/*.{j,t}s?(x)', '**/tests/unit/**/*.spec.{j,t}s?(x)'],
+      env: {
+        jest: true,
+      },
     },
-} 
+  ],
+  globals: {
+    $: true,
+    jQuery: true,
+  },
+};
